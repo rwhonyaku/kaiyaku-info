@@ -1,16 +1,21 @@
-// src/app/page.tsx
-
 import Link from "next/link";
 import { PHASE1_SERVICES } from "@/lib/services";
 import { AdSlot } from "@/components/AdSlot";
 
-export default function HomePage() {
+export const metadata = {
+  title: "サービス一覧",
+  description:
+    "解約・退会に関する公式公開情報を、中立的に整理したサービス一覧です。",
+  alternates: { canonical: "/service" },
+};
+
+export default function ServiceIndexPage() {
   return (
     <main className="container stack-lg">
       <section className="card stack">
-        <h1>解約情報リファレンス（kaiyaku-info.com）</h1>
+        <h1>サービス一覧</h1>
         <p className="muted">
-          公式サイトに掲載されている解約・退会情報を、見やすく整理して提供する中立的リファレンスです。
+          本一覧は、各サービスが公式に公開している解約・退会情報への参照ページです。
           操作方法の助言や結果の保証を行うものではありません。
         </p>
       </section>
@@ -23,12 +28,15 @@ export default function HomePage() {
               <Link href={`/service/${s.slug}`}>
                 {s.serviceName}の解約・退会方法（公式情報まとめ）
               </Link>
+              <div className="muted" style={{ marginTop: 4, fontSize: "0.95rem" }}>
+                情報参照日：{s.asOf}
+              </div>
             </li>
           ))}
         </ul>
       </section>
 
-      <AdSlot slotId="kaiyaku-info-home-bottom" />
+      <AdSlot slotId="kaiyaku-info-service-index-bottom" />
     </main>
   );
 }
