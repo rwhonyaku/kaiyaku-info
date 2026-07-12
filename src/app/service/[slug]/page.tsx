@@ -1,13 +1,24 @@
-// src/app/service/[slug]/page.tsx
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/AdSlot";
+import { ServiceFactsTable } from "@/components/ServiceFactsTable";
 import { getServiceBySlug, PHASE1_SLUGS } from "@/lib/services";
+import type { ServiceRecord } from "@/lib/services";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
+};
+
+type NoteGroup = {
+  title: string;
+  items: string[];
+};
+
+type DetailSection = {
+  title: string;
+  items?: string[];
+  body?: string;
 };
 
 export function generateStaticParams() {
@@ -16,117 +27,383 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const svc = getServiceBySlug(slug);
-  if (!svc) return {};
+  const service = getServiceBySlug(slug);
+  if (!service) return {};
 
   return {
-    title: `${svc.serviceName}の解約・退会方法（公式情報まとめ）`,
-    description: `${svc.serviceName}が公式に案内している解約・退会情報を、中立的に整理した参考ページです。`,
-    alternates: { canonical: `/service/${svc.slug}` },
+    title: `${service.serviceName}の解約・退会方法（公式情報まとめ）`,
+    description: `${service.serviceName}が公式に案内している解約・退会情報を、中立的に整理した参考ページです。`,
+    alternates: { canonical: `/service/${service.slug}` },
   };
+}
+
+function getWhereText(methods: string) {
+  if (methods.includes("Web") && methods.includes("アプリ")) {
+    return "Webとアプリの案内があり、購入経路や決済方法によって確認先が分かれる場合があります。";
+  }
+  if (methods.includes("端末")) {
+    return "端末側のサブスクリプション管理画面を確認する形式です。";
+  }
+  if (methods.includes("アプリ")) {
+    return "アプリ側の案内があり、購入経路によって手続き先が分かれる場合があります。";
+  }
+  if (methods.includes("Web")) {
+    return "Web上のアカウント情報・契約情報・設定画面などから確認する形式です。";
+  }
+
+  return `${methods} での案内が掲載されています。`;
+}
+
+function buildRouteItems(
+  primaryMethods: string,
+  loginRequired: "必要" | "不要",
+  notes?: string[],
+) {
+  const items = [
+    getWhereText(primaryMethods),
+    loginRequired === "必要"
+      ? "公式案内では、手続きにログインが必要です。"
+      : "公式案内では、ログインせず確認できる手順が案内されています。",
+  ];
+
+  if (notes?.length) {
+    items.push(...notes);
+  }
+
+  return items;
+}
+
+function buildPrimaryNotes(slug: string): NoteGroup[] {
+  const service = getServiceBySlug(slug);
+  if (!service) return [];
+
+  return [
+    ...(service.timingPoints?.length
+      ? [{ title: "タイミング・期間", items: service.timingPoints }]
+      : []),
+    ...(service.afterCancelPoints?.length
+      ? [{ title: "解約後の取り扱い", items: service.afterCancelPoints }]
+      : []),
+    ...(service.confirmationPoints?.length
+      ? [{ title: "確認に関する記載", items: service.confirmationPoints }]
+      : []),
+    ...(service.troubleshootingPoints?.length
+      ? [{ title: "手続き先が分かれるケース", items: service.troubleshootingPoints }]
+      : []),
+    ...(service.benefitsPoints?.length
+      ? [{ title: "特典・ポイント等", items: service.benefitsPoints }]
+      : []),
+  ];
+}
+
+function buildStructuredSections(service: ServiceRecord): DetailSection[] {
+  return [
+    ...(service.cancellationEntryPoint?.length || service.billingRouteNotes?.length
+      ? [
+          {
+            title: "手続き先・管理画面",
+            items: [
+              ...(service.cancellationEntryPoint ?? []),
+              ...(service.billingRouteNotes ?? []),
+            ],
+          },
+        ]
+      : []),
+    ...(service.cancellationTimingNotes?.length || service.postCancellationAccess?.length
+      ? [
+          {
+            title: "更新日・利用期間に関する記載",
+            items: [
+              ...(service.cancellationTimingNotes ?? []),
+              ...(service.postCancellationAccess ?? []),
+            ],
+          },
+        ]
+      : []),
+    ...(service.cancellationVsAccountDeletion?.length
+      ? [
+          {
+            title: "解約とアカウント削除の違い",
+            items: service.cancellationVsAccountDeletion,
+          },
+        ]
+      : []),
+    ...(service.confirmationNotes?.length
+      ? [
+          {
+            title: "完了確認・表示に関する記載",
+            items: service.confirmationNotes,
+          },
+        ]
+      : []),
+    ...(service.unavailableOrExceptionNotes?.length
+      ? [
+          {
+            title: "契約経路が分かれるケース",
+            items: service.unavailableOrExceptionNotes,
+          },
+        ]
+      : []),
+    ...(service.officialSourceSummary
+      ? [
+          {
+            title: "公式ページで確認できる内容",
+            body: service.officialSourceSummary,
+          },
+        ]
+      : []),
+  ];
+}
+
+function getLayoutTone(noteCount: number) {
+  if (noteCount >= 4) return "rich";
+  if (noteCount >= 2) return "balanced";
+  return "lean";
 }
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
-  const svc = getServiceBySlug(slug);
-  if (!svc) notFound();
+  const service = getServiceBySlug(slug);
+  if (!service) notFound();
+
+  const structuredSections = buildStructuredSections(service);
+  const hasStructuredSections = structuredSections.length > 0;
+  const primaryNotes = hasStructuredSections ? [] : buildPrimaryNotes(service.slug);
+  const routeItems = buildRouteItems(
+    service.primaryMethods,
+    service.loginRequired,
+    service.notes,
+  );
+
+  const layoutTone = getLayoutTone(primaryNotes.length);
+  const featuredNote = primaryNotes[0] ?? null;
+  const secondaryNotes = primaryNotes.slice(1);
 
   return (
-    <main className="container stack-lg">
-      <article className="card stack-lg">
-        <h1>{svc.serviceName}の解約・退会方法（公式情報まとめ）</h1>
+    <div
+      className={`reading-shell service-page service-page-varied service-page-${layoutTone}`}
+    >
+      <nav className="breadcrumb" aria-label="パンくず">
+        <Link href="/">ホーム</Link>
+        <span>/</span>
+        <Link href="/service">サービス一覧</Link>
+        <span>/</span>
+        <span>{service.serviceName}</span>
+      </nav>
 
-        <p>
-          本ページでは、{svc.serviceName}
-          が公式に案内している解約・退会手続きに関する情報を整理して掲載しています。
-          操作方法の助言や結果の保証を行うものではありません。
-        </p>
-
-        <section>
-          <h2>基本情報</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>サービス名</th>
-                <td>{svc.serviceName}</td>
-              </tr>
-              <tr>
-                <th>提供会社</th>
-                <td>{svc.companyName}</td>
-              </tr>
-              <tr>
-                <th>解約手続きの主な方法</th>
-                <td>{svc.primaryMethods}</td>
-              </tr>
-              <tr>
-                <th>ログイン要否</th>
-                <td>{svc.loginRequired}</td>
-              </tr>
-              <tr>
-                <th>手続きにかかる目安時間</th>
-                <td>{svc.timeEstimate ?? "記載がある場合のみ"}</td>
-              </tr>
-              <tr>
-                <th>情報参照日</th>
-                <td>{svc.asOf}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p className="note">目安時間は公式記載がある場合のみ。推測は行いません。</p>
+      <article className="service-page">
+        <section className="service-hero service-hero-tight">
+          <div className="service-hero-inner">
+            <p className="service-kicker">公式情報を見やすく整理</p>
+            <h1 className="service-title">
+              {service.serviceName}の解約・退会方法（公式情報まとめ）
+            </h1>
+            <p>
+              主な手続き方法、確認先、注記、公式リンクを、先に把握しやすい形で整理しています。
+            </p>
+            <div className="summary-pills" aria-label="ページ要約">
+              <span className="summary-pill">
+                主な手続き方法: {service.primaryMethods}
+              </span>
+              <span className="summary-pill">
+                ログイン: {service.loginRequired}
+              </span>
+              <span className="summary-pill">情報参照日: {service.asOf}</span>
+            </div>
+          </div>
         </section>
 
-        <section>
-          <h2>解約手続き（公式案内ベース）</h2>
-          <ol>
-            <li>マイページにログイン</li>
-            <li>契約情報／アカウント設定を開く</li>
-            <li>「解約」「退会」等の項目を選択</li>
-            <li>画面の案内に従って完了</li>
-          </ol>
+        <section className="service-intro-block">
+          <h2 className="section-heading">このページで確認できること</h2>
+          <p className="section-intro">
+            {service.serviceName}
+            の公式案内をもとに、手続き場所、基本情報、タイミングや取り扱いに関する注記、公式リンクをまとめています。
+          </p>
+        </section>
 
-          <p className="note">※ UI文言は断定せず、抽象度を保っています。</p>
+        <section className="detail-grid detail-grid-emphasis">
+          <section className="info-panel stack">
+            <h2 className="panel-title">基本情報</h2>
+            <ServiceFactsTable service={service} />
+            <p className="panel-note">
+              所要時間は、公式に記載がある場合のみ掲載しています。
+            </p>
+          </section>
 
-          {svc.notes?.length ? (
-            <ul>
-              {svc.notes.map((n) => (
-                <li key={n}>{n}</li>
+          <aside className="route-panel stack">
+            <h2 className="panel-title">どこで解約するか</h2>
+            <ul className="clean-list stack">
+              {routeItems.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
-          ) : null}
+          </aside>
         </section>
 
-        <section>
-          <h2>公式に案内されている注意点</h2>
-          <ul>
-            <li>次回請求日前の手続きが必要な場合があります</li>
-            <li>解約後もしばらく利用可能な場合があります</li>
-            <li>プランによって手続きが異なる場合があります</li>
-          </ul>
-          <p className="note">※ 公式に明記されている事項のみを前提にしています。</p>
-        </section>
+        {service.contractRouteNotes?.length ? (
+          <section className="section-panel stack-lg">
+            <div className="stack">
+              <h2 className="section-heading">契約経路別の確認先</h2>
+              <p className="section-intro">
+                公式ページ内で契約経路ごとに分かれている手続き先を整理しています。
+              </p>
+            </div>
 
-        <section>
-          <h2>公式リンク</h2>
-          <ul>
-            {svc.officialLinks.map((l) => (
-              <li key={l.url}>
-                <Link href={l.url} target="_blank" rel="noopener noreferrer">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+            <div className="route-note-grid">
+              {service.contractRouteNotes.map((route) => (
+                <section className="route-note-card stack" key={route.route}>
+                  <div>
+                    <p className="route-note-label">契約経路</p>
+                    <h3>{route.route}</h3>
+                  </div>
+                  <p className="route-note-management">{route.management}</p>
+                  {route.notes?.length ? (
+                    <ul className="clean-list stack">
+                      {route.notes.map((note) => (
+                        <li key={note}>{note}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
-        <section className="disclaimer">
-          <p>
-            本情報は公式公開情報を整理したものです。実際の条件・結果は必ず公式案内をご確認ください。
-          </p>
+        {hasStructuredSections ? (
+          <section className="section-panel stack-lg">
+            <div className="stack">
+              <h2 className="section-heading">サービス別の確認事項</h2>
+              <p className="section-intro">
+                公式ページに掲載されている内容を、契約経路、更新日、解約後の扱いなどに分けて整理しています。
+              </p>
+            </div>
+
+            <div className="note-groups note-groups-varied">
+              {structuredSections.map((group, index) => (
+                <section
+                  key={group.title}
+                  className={`note-card ${index === 0 ? "note-card-featured" : ""}`}
+                >
+                  <h3>{group.title}</h3>
+                  {group.body ? <p>{group.body}</p> : null}
+                  {group.items?.length ? (
+                    <ul className="clean-list stack">
+                      {group.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </section>
+              ))}
+            </div>
+          </section>
+        ) : service.officialProcedureSections?.length ? (
+          <section className="section-panel stack-lg">
+            <div className="stack">
+              <h2 className="section-heading">公式案内で確認できる手続き項目</h2>
+              <p className="section-intro">
+                公式ページで実際に案内されている確認事項だけを、項目ごとに整理しています。
+              </p>
+            </div>
+
+            <div className="note-groups note-groups-varied">
+              {service.officialProcedureSections.map((group, index) => (
+                <section
+                  key={group.title}
+                  className={`note-card ${index === 0 ? "note-card-featured" : ""}`}
+                >
+                  <h3>{group.title}</h3>
+                  <ul className="clean-list stack">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {featuredNote ? (
+          <section className="service-focus-band">
+            <div className="service-focus-copy stack">
+              <h2 className="section-heading">先に確認しておきたいポイント</h2>
+              <p className="section-intro">
+                公式ページ内で特に確認しやすい注記を、内容ごとに整理しています。
+              </p>
+            </div>
+
+            <section className="feature-note-card stack">
+              <h3>{featuredNote.title}</h3>
+              <ul className="clean-list stack">
+                {featuredNote.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          </section>
+        ) : null}
+
+        {secondaryNotes.length ? (
+          <section className="secondary-notes-layout">
+            <div className="note-groups note-groups-varied note-groups-secondary">
+              {secondaryNotes.map((group, index) => (
+                <section
+                  key={group.title}
+                  className={`note-card ${index % 3 === 2 ? "note-card-compact" : ""}`}
+                >
+                  <h3>{group.title}</h3>
+                  <ul className="clean-list stack">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {primaryNotes.length === 0 ? (
+          <section className="compact-panel compact-panel-secondary stack">
+            <h2 className="panel-title">掲載範囲</h2>
+            <p>
+              このページでは、公式ページで確認できる基本情報と公式リンクを中心に整理しています。
+            </p>
+          </section>
+        ) : null}
+
+        <section className="links-and-disclaimer">
+          <section className="section-panel section-panel-compact stack-lg">
+            <div className="stack">
+              <h2 className="section-heading">公式リンク</h2>
+              <p className="section-intro">
+                最新の条件や画面表示は、各公式ページでご確認ください。
+              </p>
+            </div>
+            <ul className="official-link-list">
+              {service.officialLinks.map((link) => (
+                <li key={link.url}>
+                  <Link href={link.url} target="_blank" rel="noopener noreferrer">
+                    <span className="official-link-label">{link.label}</span>
+                    <span className="official-link-url">{link.url}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="disclaimer-panel disclaimer-panel-inline stack">
+            <h2 className="panel-title">免責事項</h2>
+            <p>
+              本ページは、公式公開情報を整理した参照ページです。実際の条件、適用時期、手続き結果、画面表示は、必ず各サービスの公式案内をご確認ください。
+            </p>
+          </section>
         </section>
       </article>
 
-      <AdSlot slotId={`kaiyaku-info-${svc.slug}-bottom`} />
-    </main>
+      <AdSlot slotId={`kaiyaku-info-${service.slug}-bottom`} />
+    </div>
   );
 }

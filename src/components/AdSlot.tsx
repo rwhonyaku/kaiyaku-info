@@ -34,12 +34,12 @@ export function AdSlot({ slotId, adSlot, style }: Props) {
 
   // Auto Ads only: render a neutral spacer so layout doesn’t jump.
   if (!adSlot) {
-    return <section aria-label="Advertisement" data-slot={slotId} className="ad-slot" />;
+    return <section aria-label="広告" data-slot={slotId} className="ad-slot" />;
   }
 
   // Manual unit (responsive)
   return (
-    <section aria-label="Advertisement" data-slot={slotId} className="ad-slot">
+    <section aria-label="広告" data-slot={slotId} className="ad-slot">
       <ins
         className="adsbygoogle"
         style={{ display: "block", ...(style ?? {}) }}

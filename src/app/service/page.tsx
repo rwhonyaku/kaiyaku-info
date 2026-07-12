@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { PHASE1_SERVICES } from "@/lib/services";
 import { AdSlot } from "@/components/AdSlot";
+import { ServiceDirectory } from "@/components/ServiceDirectory";
+import { PHASE1_SERVICES } from "@/lib/services";
 
 export const metadata = {
   title: "サービス一覧",
@@ -11,32 +11,34 @@ export const metadata = {
 
 export default function ServiceIndexPage() {
   return (
-    <main className="container stack-lg">
-      <section className="card stack">
-        <h1>サービス一覧</h1>
-        <p className="muted">
-          本一覧は、各サービスが公式に公開している解約・退会情報への参照ページです。
-          操作方法の助言や結果の保証を行うものではありません。
-        </p>
+    <div className="shell page-stack">
+      <section className="hero-panel hero-panel-compact">
+        <div className="stack">
+          <p className="hero-kicker">掲載サービス一覧</p>
+          <h1 className="hero-title hero-title-compact">サービス一覧</h1>
+          <p className="lead lead-compact">
+            主な手続き方法、ログイン要否、情報参照日を一覧で確認できます。
+          </p>
+        </div>
       </section>
 
-      <section className="card stack">
-        <h2>Phase 1（20サービス）</h2>
-        <ul className="list">
-          {PHASE1_SERVICES.map((s) => (
-            <li key={s.slug}>
-              <Link href={`/service/${s.slug}`}>
-                {s.serviceName}の解約・退会方法（公式情報まとめ）
-              </Link>
-              <div className="muted" style={{ marginTop: 4, fontSize: "0.95rem" }}>
-                情報参照日：{s.asOf}
-              </div>
-            </li>
-          ))}
-        </ul>
+      <section className="service-hub stack-lg">
+        <div className="service-index-header">
+          <div className="stack">
+            <h2 className="section-heading">掲載中のサービス</h2>
+            <p className="section-intro">
+              各詳細ページでは、確認先や公式注記を見やすく整理しています。
+            </p>
+          </div>
+          <p className="section-caption">
+            現在 {PHASE1_SERVICES.length} サービスを掲載しています。
+          </p>
+        </div>
+
+        <ServiceDirectory services={PHASE1_SERVICES} />
       </section>
 
       <AdSlot slotId="kaiyaku-info-service-index-bottom" />
-    </main>
+    </div>
   );
 }
