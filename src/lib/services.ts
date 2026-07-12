@@ -62,10 +62,68 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web",
     loginRequired: "必要",
     timeEstimate: "記載なし",
-    asOf: "2025年12月",
+    asOf: "2026年07月",
     officialLinks: [
       { label: "ヘルプ / 解約", url: "https://help.netflix.com/ja/node/407" },
+      {
+        label: "メンバーシップの管理",
+        url: "https://www.netflix.com/cancelplan",
+      },
+      {
+        label: "アカウント",
+        url: "https://www.netflix.com/Account",
+      },
       { label: "利用規約", url: "https://help.netflix.com/legal/termsofuse" },
+    ],
+    cancellationEntryPoint: [
+      "Netflixアカウントは、メンバーシップの管理ページからキャンセルできます。",
+      "ログインしていない場合は、メンバーシップの管理ページを開く前にログインが必要です。",
+      "管理ページで「キャンセル」を選び、「キャンセル手続きの完了」をタップまたはクリックする流れです。",
+    ],
+    billingRouteNotes: [
+      "Netflixを含むパッケージに変更する場合、既存のNetflixアカウントをキャンセルする必要はなく、アカウントをパッケージにリンクする案内です。",
+      "アカウントをパッケージに連携すると、パッケージに料金が含まれるようになり、Netflixに登録済みの支払い方法への請求がただちに停止されます。",
+      "プリペイド・ギフトカードやキャンペーンの残高が残っている場合のキャンセルについて、公式ページ内に別項目があります。",
+    ],
+    cancellationTimingNotes: [
+      "メンバーシップの一時停止を選択した場合、次の請求日まではNetflixの視聴を継続できます。",
+      "一時停止は次の請求日から1ヵ月間適用され、その期間の料金は発生しません。",
+      "一時停止期間は、最大3ヵ月間まで延長可能と記載されています。",
+    ],
+    postCancellationAccess: [
+      "アカウントの再開はいつでも可能と案内されています。",
+      "視聴履歴はアカウントが閉鎖してから24ヵ月間保存され、その期間内にメンバーシップを再開すれば同じ視聴履歴が表示されます。",
+      "あなたにオススメ、マイ評価、アカウント詳細、ゲームプレイの履歴、ゲームの保存内容も24ヵ月間保存されると記載されています。",
+    ],
+    cancellationVsAccountDeletion: [
+      "公式ページでは、アカウントからログアウトする、またはNetflixアプリを削除するだけでは、アカウントをキャンセルできないと説明されています。",
+      "メンバーシップのキャンセルとアカウント削除に関する操作は、公式ページで案内されている方法に沿って行う扱いです。",
+    ],
+    confirmationNotes: [
+      "キャンセル手続きが完了すると、アカウントに登録されているメールアドレスに確認メールが送信されます。",
+    ],
+    unavailableOrExceptionNotes: [
+      "キャンセルの選択肢が表示されない場合に関する項目が、公式ページ内に用意されています。",
+      "メンバーシップの一時停止機能はベーシックプランでは利用できません。",
+      "自動口座振替、プリペイド・ギフトカード、一部のパートナー経由の支払いでは、メンバーシップの一時停止機能を利用できない場合があります。",
+      "一時停止中はストリーミング再生や作品のダウンロードはできませんが、作品検索やマイリストへの追加は引き続き可能です。",
+      "一時停止中にアカウントをパッケージに連携させた場合、一時停止の解除まで最大24時間かかる場合があります。",
+    ],
+    officialSourceSummary:
+      "Netflixのヘルプでは、メンバーシップの管理ページからキャンセルを完了する流れ、確認メール、ログアウトやアプリ削除ではキャンセルにならない点が案内されています。Netflixを含むパッケージへ変更する場合は、既存アカウントをキャンセルせずにパッケージへリンクする扱いです。一時停止、再開、視聴履歴などの24ヵ月保存、プリペイド・ギフトカードやキャンペーン残高がある場合の項目も同じページで確認できます。",
+    contractRouteNotes: [
+      {
+        route: "Netflix直接契約",
+        management: "メンバーシップの管理ページ",
+        notes: ["「キャンセル」から「キャンセル手続きの完了」へ進む案内です。"],
+      },
+      {
+        route: "Netflixを含むパッケージ",
+        management: "既存アカウントをパッケージにリンク",
+        notes: [
+          "パッケージに料金が含まれるようになるため、Netflixに登録済みの支払い方法への請求が停止されます。",
+        ],
+      },
     ],
   },
 
@@ -76,13 +134,49 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web",
     loginRequired: "必要",
     timeEstimate: "記載なし",
-    asOf: "2025年12月",
+    asOf: "2026年07月",
     officialLinks: [
       {
         label: "ヘルプ / Amazonプライム会員登録をキャンセルする",
         url: "https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=GTJQ7QZY7QL2HK4Y",
       },
+      {
+        label: "Amazonプライム会員登録のキャンセル",
+        url: "https://www.amazon.co.jp/mm/pipeline/cancellation",
+      },
+      {
+        label: "Amazonプライム会員情報",
+        url: "https://www.amazon.co.jp/gp/primecentral",
+      },
+      {
+        label: "プライム会員情報を管理する",
+        url: "https://www.amazon.co.jp/mc?ref=cs_help_148618_03",
+      },
     ],
+    cancellationEntryPoint: [
+      "Amazonプライム会員から退会する場合は、「Amazonプライム会員情報」ページにアクセスします。",
+      "「プライム会員情報」を選択し、画面上の指示に従って手続きする案内です。",
+      "公式ヘルプには、Amazonプライム会員登録のキャンセルページへのリンクも掲載されています。",
+    ],
+    billingRouteNotes: [
+      "返金は、プライム会員会費の支払いに使用した支払い方法に対して行われます。",
+      "Amazonギフトカードで支払った場合は、クレジットカードでの支払い分を返金した後、残額をAmazonギフトカード残高に返す扱いです。",
+    ],
+    cancellationTimingNotes: [
+      "無料体験期間または有料会員期間が終了すると、アカウントは有料Amazonプライム会員アカウントとして自動更新されます。",
+      "無料体験期間終了日または有料会員期間更新日は、「プライム会員情報を管理する」の上部に表示されます。",
+      "「更新前にお知らせを受け取る」を選択している場合、Amazonプライム会員期間終了の3日前にEメールが届くと記載されています。",
+    ],
+    postCancellationAccess: [
+      "Amazonプライム特典の利用がない有料会員は、現在の会員期間中の会費の全額返金を受けられると記載されています。",
+      "プライム特典利用のない場合は、退会と同時に会費を返金する扱いです。",
+      "返金は2〜3営業日以内に処理されると案内されています。",
+    ],
+    confirmationNotes: [
+      "無料体験期間終了日または有料会員期間更新日は、「プライム会員情報を管理する」の上部で確認できます。",
+    ],
+    officialSourceSummary:
+      "Amazon.co.jpのヘルプでは、Amazonプライム会員情報ページからプライム会員登録をキャンセルする流れが案内されています。特典を利用していない有料会員の返金、支払い方法別の返金先、返金処理の目安も同じページで確認できます。無料体験期間終了日や有料会員期間更新日は、プライム会員情報を管理する画面の上部に表示される記載です。",
   },
 
   {
@@ -1322,6 +1416,23 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     notes: [
       "解約手続きは、ヘッダーのdアカウントメニューではなく、ページ下部の「dマガジン会員登録/解約」から行います。",
     ],
+    cancellationEntryPoint: [
+      "解約手続きは、ヘッダーのdアカウントメニューではなく、ページ下部の「dマガジン会員登録/解約」から行う案内です。",
+    ],
+    cancellationTimingNotes: [
+      "月途中で解約した場合でも日割り返金はありません。",
+    ],
+    postCancellationAccess: [
+      "解約後はダウンロード済みの雑誌を含めて閲覧できなくなります。",
+    ],
+    confirmationNotes: [
+      "手続き後はdマガジンの契約状況画面やMy docomoで確認できます。",
+    ],
+    unavailableOrExceptionNotes: [
+      "別のdアカウントで契約している場合や、解約後の反映まで時間を要する場合があります。",
+    ],
+    officialSourceSummary:
+      "dマガジンのヘルプでは、ページ下部の「dマガジン会員登録/解約」から手続きする導線が案内されています。月途中の解約でも日割り返金はなく、解約後はダウンロード済みの雑誌を含めて閲覧できなくなる記載です。契約状況はdマガジンの契約状況画面やMy docomoで確認できます。",
     afterCancelPoints: [
       "解約後はダウンロード済みの雑誌を含めて閲覧できなくなります。",
     ],
@@ -1357,6 +1468,36 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     notes: [
       "App Store 経由で購入した場合は、App Store 側で解約します。",
     ],
+    cancellationEntryPoint: [
+      "Google Oneメンバーシップの解約方法は、Google Oneヘルプで案内されています。",
+      "App Store経由で購入した場合は、App Store側で解約します。",
+    ],
+    billingRouteNotes: [
+      "App Store経由で購入した場合は、Google One側ではなくApp Store側で解約する案内です。",
+    ],
+    cancellationTimingNotes: [
+      "解約後も利用期間終了までは有料メンバーシップが続きます。",
+    ],
+    postCancellationAccess: [
+      "解約後は追加ストレージや会員特典が利用できなくなります。",
+      "使用量が15GBを超えている場合は、解約後の取り扱いに制限が生じます。",
+      "Google Oneメンバー特典の扱いは、解約後に変わります。",
+    ],
+    unavailableOrExceptionNotes: [
+      "Google One以外のストレージサービスに切り替える場合の手順が、公式ヘルプで別途案内されています。",
+    ],
+    officialSourceSummary:
+      "Google Oneのヘルプでは、メンバーシップの解約と購入・解約・払い戻しポリシーが別ページで案内されています。App Store経由で購入した場合はApp Store側で解約する扱いです。解約後も利用期間終了までは有料メンバーシップが続き、終了後は追加ストレージや会員特典、15GB超過時の扱いに影響します。",
+    contractRouteNotes: [
+      {
+        route: "Google One",
+        management: "Google Oneメンバーシップの解約",
+      },
+      {
+        route: "App Store購入",
+        management: "App Store側のサブスクリプション管理",
+      },
+    ],
     afterCancelPoints: [
       "解約後は追加ストレージや会員特典が利用できなくなります。",
       "使用量が 15 GB を超えている場合は、解約後の取り扱いに制限が生じます。",
@@ -1390,6 +1531,22 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
         url: "https://support.apple.com/ja-jp/121290",
       },
     ],
+    cancellationEntryPoint: [
+      "iCloud+のダウングレードまたは解約は、Appleサポートで案内されています。",
+      "Appleデバイスが手元にない場合の解約方法も、別のAppleサポートページで案内されています。",
+    ],
+    cancellationTimingNotes: [
+      "ストレージ容量の変更は、請求期間終了後に適用されます。",
+    ],
+    postCancellationAccess: [
+      "解約後はiCloud+の機能（例：プライベートリレー、非公開メール中継等）が利用できなくなります。",
+      "保存量が新しいプラン容量を超える場合は、同期やバックアップの扱いに影響します。",
+    ],
+    unavailableOrExceptionNotes: [
+      "Appleデバイスが手元にない場合の解約方法が、公式サポートで別途案内されています。",
+    ],
+    officialSourceSummary:
+      "iCloud+のAppleサポートでは、プランのダウングレードまたは解約と、Appleデバイスがない場合のサブスクリプション解約方法が分けて案内されています。ストレージ容量の変更は請求期間終了後に適用されます。解約後はiCloud+機能や、保存量が新しい容量を超えている場合の同期・バックアップに影響します。",
     afterCancelPoints: [
       "解約後は iCloud+ の機能（例：プライベートリレー、非公開メール中継等）が利用できなくなります。",
       "保存量が新しいプラン容量を超える場合は、同期やバックアップの扱いに影響します。",
@@ -1419,6 +1576,19 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     notes: [
       "利用規約上、アカウント設定からサブスクリプションを解約する形です。",
     ],
+    cancellationEntryPoint: [
+      "利用規約上、アカウント設定からサブスクリプションを解約する形です。",
+    ],
+    cancellationTimingNotes: [
+      "解約は次の請求期間の開始前までに行い、効力は請求期間終了時に発生します。",
+      "無料トライアルは、終了前に解約すると課金されません。",
+    ],
+    postCancellationAccess: [
+      "解約後のデザイン、ユーザーコンテンツ、アップロード情報の扱いは、公式規約に沿って確認できます。",
+      "共有中のデザインについては、解約後も利用可否の扱いが記載されている場合があります。",
+    ],
+    officialSourceSummary:
+      "Canvaの利用規約では、サブスクリプションの解約はアカウント設定から行う形として整理されています。解約は次の請求期間の開始前までに行い、効力は請求期間終了時に発生します。無料トライアルは終了前に解約すると課金されない扱いです。",
     afterCancelPoints: [
       "解約後のデザイン、ユーザーコンテンツ、アップロード情報の扱いは、公式規約に沿って確認できます。",
       "共有中のデザインについては、解約後も利用可否の扱いが記載されている場合があります。",
@@ -1449,6 +1619,36 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     ],
     notes: [
       "解約手続きは、決済方法によって Web、App Store、Google Play のいずれかに分かれます。",
+    ],
+    cancellationEntryPoint: [
+      "Evernote Personalの解約手続きは、決済方法によってWeb、App Store、Google Playのいずれかに分かれます。",
+    ],
+    billingRouteNotes: [
+      "Web、App Store、Google Playのどの決済方法かによって、手続き先が分かれる案内です。",
+    ],
+    cancellationTimingNotes: [
+      "直接課金のプランは、次回更新日にダウングレードが適用されます。",
+    ],
+    postCancellationAccess: [
+      "解約後は現在の請求期間終了後にFree / Starterへ移行します。",
+      "ノートやノートブックは、無料プランの利用条件の範囲で引き続きアクセスできます。",
+    ],
+    officialSourceSummary:
+      "Evernoteのヘルプでは、Evernote Personalの解約とStarterへのダウングレードが案内されています。決済方法によってWeb、App Store、Google Playのいずれかに手続き先が分かれます。直接課金のプランは次回更新日にダウングレードが適用され、現在の請求期間終了後にFree / Starterへ移行します。",
+    contractRouteNotes: [
+      {
+        route: "Web / 直接課金",
+        management: "Evernote側のプラン管理",
+        notes: ["直接課金のプランは、次回更新日にダウングレードが適用されます。"],
+      },
+      {
+        route: "App Store",
+        management: "App Store側のサブスクリプション管理",
+      },
+      {
+        route: "Google Play",
+        management: "Google Play側の定期購入管理",
+      },
     ],
     afterCancelPoints: [
       "解約後は現在の請求期間終了後に Free / Starter へ移行します。",
@@ -1736,6 +1936,39 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     ],
     notes: [
       "解約手続きの確認先は、Web、App Store、Google Play、Amazon のどの決済方法かによって分かれます。",
+    ],
+    cancellationEntryPoint: [
+      "各種プレミアム（有料購読）の解約方法は、Web、App Store、Google Play、Amazonのどの決済方法かによって確認先が分かれます。",
+    ],
+    billingRouteNotes: [
+      "解約手続きの確認先は、Web、App Store、Google Play、Amazonのどの決済方法かによって分かれます。",
+    ],
+    cancellationTimingNotes: [
+      "更新日の24時間前までの手続きが案内されています。",
+      "Web決済は、解約後も期間満了まで利用できます。",
+    ],
+    cancellationVsAccountDeletion: [
+      "アカウント削除は、プレミアムの期間満了後に行います。",
+    ],
+    confirmationNotes: [
+      "アプリ内の「設定・アカウント」からサブスクリプションプランを確認できます。",
+    ],
+    unavailableOrExceptionNotes: [
+      "アカウント削除は、プレミアムの期間満了後に行います。",
+    ],
+    officialSourceSummary:
+      "NewsPicksのヘルプでは、各種プレミアム（有料購読）の解約方法が、Web、App Store、Google Play、Amazonの決済方法ごとに分けて案内されています。更新日の24時間前までの手続きが案内され、Web決済は解約後も期間満了まで利用できます。アカウント削除はプレミアムの期間満了後に行う扱いです。",
+    contractRouteNotes: [
+      {
+        route: "Web決済",
+        management: "Web決済のプレミアム解約",
+        notes: ["解約後も期間満了まで利用できます。"],
+      },
+      {
+        route: "App Store / Google Play / Amazon",
+        management: "各決済方法ごとの解約先",
+        notes: ["決済方法によって確認先が分かれます。"],
+      },
     ],
     confirmationPoints: [
       "アプリ内の「設定・アカウント」からサブスクリプションプランを確認できます。",
@@ -2029,6 +2262,18 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     notes: [
       "契約変更や解約は、日経IDラウンジで手続きします。",
     ],
+    cancellationEntryPoint: [
+      "契約変更や解約は、日経IDラウンジで手続きします。",
+    ],
+    cancellationTimingNotes: [
+      "1か月無料体験中は、無料体験終了前に解約すると月額料金はかかりません。",
+      "無料体験終了後は、月額有料会員に自動移行します。",
+    ],
+    unavailableOrExceptionNotes: [
+      "契約形態や申し込み時期によって、適用中のプランや無料体験の条件が異なります。",
+    ],
+    officialSourceSummary:
+      "日経電子版の掲載情報では、契約変更や解約は日経IDラウンジで手続きする扱いです。1か月無料体験中は、無料体験終了前に解約すると月額料金はかかりません。契約形態や申し込み時期によって、適用中のプランや無料体験の条件が異なる場合があります。",
     troubleshootingPoints: [
       "契約形態や申し込み時期によって、適用中のプランや無料体験の条件が異なります。",
     ],
