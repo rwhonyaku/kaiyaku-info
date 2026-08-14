@@ -31,8 +31,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!service) return {};
 
   return {
-    title: `${service.serviceName}の解約・退会方法（公式情報まとめ）`,
-    description: `${service.serviceName}が公式に案内している解約・退会情報を、中立的に整理した参考ページです。`,
+    title:
+      service.seoTitle ??
+      `${service.serviceName}の解約・退会方法（公式情報まとめ）`,
+    description:
+      service.seoDescription ??
+      `${service.serviceName}が公式に案内している解約・退会情報を、中立的に整理した参考ページです。`,
     alternates: { canonical: `/service/${service.slug}` },
   };
 }
@@ -174,6 +178,7 @@ export default async function ServicePage({ params }: PageProps) {
     service.loginRequired,
     service.notes,
   );
+  const searchIntentNotes = service.searchIntentNotes ?? [];
 
   const layoutTone = getLayoutTone(primaryNotes.length);
   const featuredNote = primaryNotes[0] ?? null;
@@ -264,6 +269,33 @@ export default async function ServicePage({ params }: PageProps) {
                       ))}
                     </ul>
                   ) : null}
+                </section>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {searchIntentNotes.length ? (
+          <section className="section-panel stack-lg">
+            <div className="stack">
+              <h2 className="section-heading">名称・表示別の確認事項</h2>
+              <p className="section-intro">
+                公式ページで使われている名称や請求元の分岐を、確認しやすい単位で整理しています。
+              </p>
+            </div>
+
+            <div className="note-groups note-groups-varied">
+              {searchIntentNotes.map((group, index) => (
+                <section
+                  key={group.title}
+                  className={`note-card ${index === 0 ? "note-card-featured" : ""}`}
+                >
+                  <h3>{group.title}</h3>
+                  <ul className="clean-list stack">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </section>
               ))}
             </div>
