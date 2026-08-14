@@ -254,23 +254,41 @@ export default async function ServicePage({ params }: PageProps) {
               </p>
             </div>
 
-            <div className="route-note-grid">
-              {service.contractRouteNotes.map((route) => (
-                <section className="route-note-card stack" key={route.route}>
-                  <div>
-                    <p className="route-note-label">契約経路</p>
-                    <h3>{route.route}</h3>
-                  </div>
-                  <p className="route-note-management">{route.management}</p>
-                  {route.notes?.length ? (
-                    <ul className="clean-list stack">
-                      {route.notes.map((note) => (
-                        <li key={note}>{note}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </section>
-              ))}
+            <div className="route-note-table-wrap">
+              <table className="route-note-table">
+                <thead>
+                  <tr>
+                    <th scope="col">契約経路</th>
+                    <th scope="col">確認先</th>
+                    <th scope="col">公式記載</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {service.contractRouteNotes.map((route) => (
+                    <tr key={route.route}>
+                      <td data-label="契約経路">
+                        <span className="route-note-route">{route.route}</span>
+                      </td>
+                      <td data-label="確認先">
+                        <span className="route-note-management">
+                          {route.management}
+                        </span>
+                      </td>
+                      <td data-label="公式記載">
+                        {route.notes?.length ? (
+                          <ul className="clean-list stack">
+                            {route.notes.map((note) => (
+                              <li key={note}>{note}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <span className="route-note-empty">記載なし</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         ) : null}

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { getCanonicalSiteUrl } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://kaiyaku-info.com";
+const SITE_URL = getCanonicalSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import { getCanonicalSiteUrl } from "@/lib/site";
 
 const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const notoSerifJp = Noto_Serif_JP({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://kaiyaku-info.com";
+const SITE_URL = getCanonicalSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
