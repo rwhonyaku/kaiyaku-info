@@ -257,7 +257,7 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web / 端末（サブスクリプション管理）",
     loginRequired: "必要",
     timeEstimate: "記載なし",
-    asOf: "2025年12月",
+    asOf: "2026年08月",
     officialLinks: [
       {
         label: "サポート / Apple Musicを解約する方法",
@@ -295,29 +295,37 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       },
     ],
     cancellationEntryPoint: [
-      "Apple Music のWebページでは、music.apple.com/jp/ にサインインし、マイアカウントアイコンから「設定」を開いて「サブスクリプション登録」の「管理」を選ぶ流れが案内されています。",
-      "Appleのサブスクリプション管理画面から解約する方法も、別のAppleサポートページで案内されています。",
+      "Apple MusicのWebページでは、music.apple.com/jp/ にサインインし、マイアカウントアイコンから「設定」を開いて「サブスクリプション登録」の「管理」を選びます。",
+      "Appleのサブスクリプション管理記事では、WebでAppleのサブスクリプションを解約する導線として account.apple.com の解約ページが案内されています。",
+      "iPhoneとiPadでは、設定アプリで自分の名前をタップし、「サブスクリプション」から対象サブスクリプションを選ぶ流れです。",
+      "MacではApp Storeのアカウント設定、WindowsではApple MusicアプリまたはApple TVアプリから管理する手順が掲載されています。",
     ],
     billingRouteNotes: [
-      "Google Play経由でApple Musicの料金を支払っている場合は、Androidデバイス上のApple Musicアプリまたは play.google.com でのみ解約できると記載されています。",
-      "Webで解約できない場合は、端末の「設定」からサブスクリプションを管理する案内へ分岐します。",
+      "Google Play経由でApple Musicの料金を支払っている場合は、Androidデバイス上のApple Musicアプリまたは play.google.com でのみ解約できます。",
+      "AndroidデバイスでApple MusicまたはApple TVに登録し、請求元がGoogle Playである場合は、Google Playアプリでサブスクリプションを解約する記載もあります。",
+      "通信事業者またはその他のプロバイダを通じて登録したサブスクリプションは、該当する事業者に問い合わせる扱いです。",
     ],
     cancellationTimingNotes: [
       "Apple Musicの説明では、サブスクリプションの有効期限が切れた後の利用可否が項目ごとに示されています。",
+      "無料または割引価格のトライアルを自動更新したくない場合は、トライアル期間終了日の少なくとも24時間前に解約する記載があります。",
     ],
     postCancellationAccess: [
       "有効期限が切れると、Apple Musicカタログの曲、Apple Musicカタログから追加したプレイリスト、Apple Musicカタログの音楽を使って作成したプレイリストは利用できなくなります。",
       "登録前にデバイスにあった音楽やプレイリストは、引き続き利用できると記載されています。",
     ],
     confirmationNotes: [
-      "サブスクリプション管理画面では、Apple Musicの登録状態や終了予定を確認する流れが案内されています。",
+      "キャンセルボタンが表示されない場合や、期限切れのメッセージが赤字で表示される場合、そのサブスクリプションは解約済みです。",
+      "解約したいサブスクリプションが見つからない場合は、「Appleからの領収書」や「Appleからの請求書」というキーワードでメールを検索し、領収書で使われたApple Accountを確認する手順が掲載されています。",
+      "領収書に家族のApple Accountが表示されている場合、その家族のメンバーが手順に沿って解約する扱いです。",
     ],
     unavailableOrExceptionNotes: [
-      "「サブスクリプションをキャンセルする」が表示されない場合は、すでに解約済みで更新されない状態とするAppleサポートの案内があります。",
-      "Google Play経由の支払いは、AppleのWebページではなくApple MusicアプリまたはGoogle Play側で扱う記載です。",
+      "music.apple.com/jpで解約できない場合は、設定アプリのサブスクリプション管理へ進む案内です。",
+      "キャンセルボタンが表示されない場合や期限切れのメッセージが赤字で表示される場合は、解約済みとして扱われます。",
+      "Appleから届いた領収書メールが見つからない場合、そのサブスクリプションに別の会社経由で登録した可能性が考えられると説明されています。",
+      "ドイツ、イスラエル、南アフリカ、トルコでは解約手続きに特例があると記載されています。",
     ],
     officialSourceSummary:
-      "Apple Musicのサポートページでは、Web上のApple Music設定画面から解約する流れと、Appleのサブスクリプション管理画面を使う方法が分けて掲載されています。Google Play経由の支払いについては、Androidデバイス上のApple Musicアプリまたは play.google.com でのみ解約できると説明されています。有効期限後に利用できなくなるApple Musicカタログ由来の項目も確認できます。",
+      "Apple Musicのサポートページでは、music.apple.com/jp の設定画面から解約する流れと、有効期限後に再生できなくなるApple Musicカタログ由来の項目が説明されています。Appleのサブスクリプション管理記事には、iPhone、iPad、Mac、Windows、Android、Webでの管理場所が分けて掲載されています。キャンセルボタンが表示されない状態、領収書メールでのApple Account確認、Google Playや通信事業者経由の扱いも確認できます。",
     seoTitle:
       "Apple Musicの解約方法・Webと設定アプリの確認先",
     seoDescription:
@@ -326,17 +334,25 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       {
         title: "Apple Musicとアップルミュージック表記",
         items: [
-          "このページで扱う対象は、Apple Musicのサブスクリプション解約です。",
-          "Appleサポートでは、Web上のApple Music設定画面から解約する方法と、Appleのサブスクリプション管理から解約する方法が分けて案内されています。",
-          "Google Play経由で料金を支払っている場合は、Androidデバイス上のApple Musicアプリまたは play.google.com でのみ解約できると記載されています。",
+          "このページで扱う対象はApple Musicのサブスクリプションです。",
+          "Webでは music.apple.com/jp の設定画面から「サブスクリプション登録」の「管理」を開きます。",
+          "Appleのサブスクリプション管理記事では、デバイス別の管理場所も掲載されています。",
         ],
       },
       {
-        title: "ボタン表示と有効期限後の扱い",
+        title: "キャンセルボタン・領収書・別会社経由",
         items: [
-          "「サブスクリプションをキャンセルする」が表示されない場合は、すでに解約済みで更新されない状態とするAppleサポートの案内があります。",
-          "有効期限が切れると、Apple Musicカタログの曲やカタログから追加したプレイリストは利用できなくなります。",
-          "登録前にデバイスにあった音楽やプレイリストは、引き続き利用できると記載されています。",
+          "キャンセルボタンが表示されない場合や、期限切れのメッセージが赤字で表示される場合は、解約済みです。",
+          "サブスクリプションが見つからない場合は、Appleからの領収書メールで使用されたApple Accountを確認します。",
+          "領収書メールが見つからない場合、別の会社経由で登録した可能性があると説明されています。",
+        ],
+      },
+      {
+        title: "有効期限後の利用",
+        items: [
+          "有効期限が切れると、Apple Musicカタログの曲は再生できなくなります。",
+          "カタログから追加されたプレイリストや、カタログの音楽を使って作成したプレイリストも利用できなくなります。",
+          "登録前からデバイスにあった音楽やプレイリストは引き続き利用できます。",
         ],
       },
     ],
@@ -349,17 +365,25 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
         ],
       },
       {
-        route: "Appleのサブスクリプション管理",
-        management: "端末の設定またはAppleのサブスクリプション管理画面",
+        route: "iPhone / iPad",
+        management: "設定アプリの「サブスクリプション」",
         notes: [
-          "Webで解約できない場合は、端末の「設定」からサブスクリプションを管理する案内へ分岐します。",
+          "設定アプリで自分の名前をタップし、対象サブスクリプションを選びます。",
+          "キャンセルボタンが表示されない場合は解約済みです。",
+        ],
+      },
+      {
+        route: "Mac / Windows",
+        management: "App StoreまたはApple Music / Apple TVアプリ",
+        notes: [
+          "MacはApp Storeのアカウント設定、WindowsはApple MusicアプリまたはApple TVアプリから管理します。",
         ],
       },
       {
         route: "Google Play経由の支払い",
         management: "Androidデバイス上のApple Musicアプリまたは play.google.com",
         notes: [
-          "Apple MusicアプリまたはGoogle Play側でのみ解約できると記載されています。",
+          "Google Playが請求元の場合は、Google Playアプリで解約できる記載があります。",
         ],
       },
     ],
@@ -387,7 +411,7 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web",
     loginRequired: "必要",
     timeEstimate: "記載なし",
-    asOf: "2025年12月",
+    asOf: "2026年08月",
     officialLinks: [
       {
         label: "ヘルプ / Disney+の解約方法",
@@ -1176,7 +1200,7 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web",
     loginRequired: "必要",
     timeEstimate: "記載なし",
-    asOf: "2025年12月",
+    asOf: "2026年08月",
     officialLinks: [
       {
         label: "ヘルプ / Amazon Music Unlimitedのサブスクリプションをキャンセルする",
@@ -1216,28 +1240,33 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       },
     ],
     cancellationEntryPoint: [
-      "現在登録しているプランは「Amazon Musicの設定」で確認できます。",
-      "Amazon Music Unlimitedのキャンセルは、Amazonのヘルプ「Amazon Music Unlimitedのサブスクリプションをキャンセルする」で案内されています。",
+      "Amazon Music Unlimitedのキャンセルは、Amazonのヘルプ「Amazon Music Unlimitedのサブスクリプションをキャンセルする」で扱われています。",
+      "登録中のAmazon Musicプランは「Amazon Musicの設定」で確認できます。",
+      "Amazon Music Unlimitedのプラン変更や学生プランの資格確認も、Amazon Musicの「設定」から進む記載があります。",
     ],
     billingRouteNotes: [
-      "Apple iPhoneまたはiPadのアプリ経由で登録している場合は、Appleデバイスを通じて会員登録をキャンセルする案内があります。",
-      "iOSデバイス経由の自動更新やiTunesアカウント情報の管理について、Appleサポートの案内先が示されています。",
+      "Apple iPhoneまたはiPadのAmazon Musicアプリで購入した場合、会員登録はApple iTunesアカウントを通じて作成されます。",
+      "Amazonは、Appleを通じて購入された会員登録のキャンセル、管理、支払い方法の更新、払い戻しを行うことができないと記載しています。",
+      "iTunes（アプリ支払い）で利用できるのは個人プランのみです。特別キャンペーン、割引、プロモーションはAppleデバイス経由の会員登録では利用できません。",
     ],
     cancellationTimingNotes: [
       "キャンセルした場合も、現在の請求サイクルの終了時点まで会員登録は継続します。",
-      "無料体験期間やキャンペーン期間中は、その適用期間が終了するまで当該価格・条件が適用されます。",
+      "無料体験期間やキャンペーン期間中は、その適用期間が終了するまで当該無料体験またはキャンペーン価格が適用されます。",
+      "価格改定に関するFAQでは、改定後の料金は対象の更新日から適用されると説明されています。",
     ],
     postCancellationAccess: [
       "キャンセル後も、現在の請求サイクル終了時点までは会員登録が継続する記載です。",
     ],
     confirmationNotes: [
       "登録中のプランは「Amazon Musicの設定」で確認できます。",
+      "Amazon Musicの設定は、会員登録、プラン、学生プランの利用資格確認などの確認先としてFAQ内で参照されています。",
     ],
     unavailableOrExceptionNotes: [
-      "iPhoneまたはiPadのアプリ経由で登録している場合は、Amazon側の設定ではなくAppleデバイス側で会員登録をキャンセルする案内です。",
+      "iPhoneまたはiPadのアプリ経由で登録している場合は、Amazon側ではなくAppleデバイス側で会員登録をキャンセルします。",
+      "Amazon Music Primeはプライム会員特典に含まれ、追加料金は不要と説明されています。Amazon Music Unlimitedのサブスクリプションとは別の扱いです。",
     ],
     officialSourceSummary:
-      "Amazon Music Unlimitedのヘルプでは、サブスクリプションのキャンセルと、登録中プランを確認する「Amazon Musicの設定」が案内されています。iPhoneまたはiPadアプリ経由の登録は、Appleデバイス側で会員登録をキャンセルする扱いです。キャンセル後も現在の請求サイクル終了時点まで会員登録が継続する点が明記されています。",
+      "Amazon Music UnlimitedのヘルプとFAQでは、サブスクリプションのキャンセル、登録中プランを確認する「Amazon Musicの設定」、無料体験やキャンペーン期間の扱いが確認できます。iPhoneまたはiPadのAmazon Musicアプリで購入した会員登録はApple iTunesアカウント経由となり、Amazon側ではキャンセルや払い戻しを行えません。Amazon Music Primeはプライム会員特典に含まれるサービスとして説明され、Amazon Music Unlimitedとは別の扱いです。",
     seoTitle:
       "Amazon Music Unlimitedの解約方法・設定画面とiPhone経由の確認先",
     seoDescription:
@@ -1246,16 +1275,25 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       {
         title: "Amazon Musicの設定で確認する項目",
         items: [
-          "現在登録しているプランは「Amazon Musicの設定」で確認できます。",
-          "Amazon Music Unlimitedのキャンセルは、Amazonのヘルプ「Amazon Music Unlimitedのサブスクリプションをキャンセルする」で案内されています。",
-          "登録中プランの確認先とキャンセル案内ページが、公式リンクとして分かれています。",
+          "登録中のAmazon Musicプランは「Amazon Musicの設定」で確認できます。",
+          "Amazon Music Unlimitedのキャンセルは、Amazonのキャンセル専用ヘルプで扱われています。",
+          "学生プランへの切り替えや利用資格確認も、Amazon Musicの設定から進む記載です。",
         ],
       },
       {
-        title: "アマゾンミュージック表記とUnlimited",
+        title: "Unlimited・Prime Music・無料体験",
         items: [
           "このページで扱う対象は、Amazon Music Unlimitedのサブスクリプションです。",
-          "Amazon Musicのよくある質問には、無料体験期間やキャンペーン期間、更新に関する記載があります。",
+          "Amazon Music Primeは、プライム会員特典に含まれていて追加料金は不要と説明されています。",
+          "無料体験期間やキャンペーン期間中は、その適用期間が終了するまで該当価格・条件が適用されます。",
+        ],
+      },
+      {
+        title: "iPhone・iPadアプリ経由の登録",
+        items: [
+          "Amazon MusicアプリでApple iPhoneまたはiPadから購入した場合、会員登録はApple iTunesアカウント経由で作成されます。",
+          "AmazonはApple経由の会員登録について、キャンセル、管理、支払い方法の更新、払い戻しを行えません。",
+          "iTunesアプリ支払いで利用できるのは個人プランのみです。",
         ],
       },
     ],
@@ -1264,7 +1302,7 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
         route: "Amazon Music Unlimited",
         management: "Amazon Musicの設定",
         notes: [
-          "登録中のプランを確認する画面として案内されています。",
+          "登録中のAmazon Musicプランを確認する画面として案内されています。",
           "キャンセル後も、現在の請求サイクル終了時点までは会員登録が継続する記載です。",
         ],
       },
@@ -1272,14 +1310,15 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
         route: "iPhoneまたはiPadアプリ経由の登録",
         management: "Appleデバイス側の会員登録管理",
         notes: [
-          "Amazon側の設定ではなく、Appleデバイスを通じて会員登録をキャンセルする案内です。",
+          "会員登録はApple iTunesアカウント経由で作成されます。",
+          "Amazon側ではキャンセル、管理、支払い方法の更新、払い戻しを行えません。",
         ],
       },
       {
-        route: "無料体験・キャンペーン期間",
-        management: "Amazon Musicのよくある質問",
+        route: "Amazon Music Prime",
+        management: "プライム会員特典",
         notes: [
-          "無料体験期間やキャンペーン期間中は、その適用期間が終了するまで当該価格・条件が適用されます。",
+          "Amazon Music Primeはプライム会員特典に含まれ、追加料金は不要と説明されています。",
         ],
       },
     ],
@@ -2047,11 +2086,19 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web / App Store / Google Play",
     loginRequired: "\u5fc5\u8981",
     timeEstimate: "記載なし",
-    asOf: "2026年04月",
+    asOf: "2026年08月",
     officialLinks: [
       {
         label: "YouTube Music ヘルプ / YouTube Premium と YouTube Music Premium のメンバーシップを解約する",
         url: "https://support.google.com/youtubemusic/answer/6308278?hl=ja",
+      },
+      {
+        label: "YouTube ヘルプ / YouTube Premium または YouTube Music Premium を解約する",
+        url: "https://support.google.com/youtube/answer/6308278?hl=ja",
+      },
+      {
+        label: "Google Play ヘルプ / Google Play での定期購入の解約、一時停止、変更",
+        url: "https://support.google.com/googleplay/answer/7018481?hl=ja",
       },
     ],
     officialProcedureSections: [
@@ -2077,42 +2124,53 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       },
     ],
     cancellationEntryPoint: [
-      "Web請求の場合、YouTubeの有料メンバーシップ画面が確認先として案内されています。",
-      "Apple請求またはGoogle Play請求では、各ストア側での手続き案内に分かれます。",
+      "YouTube Musicヘルプでは、有料メンバーシップの確認・管理先として youtube.com/paid_memberships が示されています。",
+      "Web請求では、[メンバーシップの管理] から [無効にする]、[続行]、理由選択、[解約] へ進む流れです。",
+      "Google Play請求サービスで登録している場合は、Google Play側の定期購入管理に分岐します。",
     ],
     billingRouteNotes: [
-      "請求元がApple、Google Play、その他のいずれかによって、確認先が異なります。",
-      "ヘルプでは、請求方法ごとに該当する案内先を確認する構成です。",
+      "iOS向けYouTubeアプリから登録し、請求元がAppleになっている場合は、Appleアカウントで有料メンバーシップを解約します。",
+      "Google Playの定期購入でYouTube有料メンバーシップを利用している場合は、Google Playのアカウント設定で解約できます。",
+      "YouTube Music PremiumとYouTube Premiumは、同じ解約ヘルプ内で有料メンバーシップとして扱われています。",
     ],
     cancellationTimingNotes: [
-      "無料トライアル期間中に解約した場合、有料メンバーシップには移行しません。",
+      "YouTubeの有料メンバーになると、解約するまでは各請求期間の始めに料金が自動的に請求されます。",
+      "メンバーシップを解約すると、再登録しない限り以後の請求は発生しません。",
+      "請求対象期間が終わるまでは、有料メンバーシップの特典を引き続き利用できます。",
+    ],
+    postCancellationAccess: [
+      "解約後も請求対象期間の終了までは、YouTube PremiumまたはYouTube Music Premiumの特典を利用できる記載です。",
     ],
     confirmationNotes: [
-      "Web請求の確認先として youtube.com/paid_memberships が案内されています。",
+      "すでに解約されているかどうかは、youtube.com/paid_memberships のアカウントの [有料メンバーシップ] で確認できます。",
+      "有料メンバーシップの確認・管理ボタンは、YouTube MusicヘルプとYouTubeヘルプの両方に掲載されています。",
     ],
     unavailableOrExceptionNotes: [
-      "Apple請求またはGoogle Play請求の場合は、YouTube側ではなく各ストア側での解約手続きが案内されています。",
-      "請求元がApple、Google Play、その他のいずれかで手続き先が分かれます。",
+      "解約に関する問題が発生している場合の確認項目として、Apple請求、Google Play請求、すでに解約済みの3点が挙げられています。",
+      "請求元がAppleの場合、YouTube側ではなくAppleアカウントで手続きします。",
+      "請求元がGoogle Playの場合、Google Playのアカウント設定が手続き先です。",
     ],
     officialSourceSummary:
-      "YouTube Music Premiumのヘルプでは、有料メンバーシップ画面から確認するWeb請求と、Apple請求・Google Play請求の手続き先が分けて説明されています。請求元によって参照先が変わるため、公式ページ自体も請求方法別の案内構成です。無料トライアル中に解約した場合は、有料メンバーシップへ移行しないと記載されています。",
+      "YouTube MusicヘルプとYouTubeヘルプでは、YouTube PremiumまたはYouTube Music Premiumの有料メンバーシップを youtube.com/paid_memberships で管理する流れが掲載されています。請求元がAppleまたはGoogle Playの場合は、各アカウント側の管理画面に分岐します。解約済みかどうかの確認先、請求対象期間終了まで特典を利用できる点、請求期間ごとの自動請求も同じページで確認できます。",
     seoTitle:
       "YouTube Music Premiumの解約方法・請求元別の確認先",
     seoDescription:
       "YouTube Music Premiumの解約方法について、YouTubeの有料メンバーシップ画面、Apple請求、Google Play請求の確認先を公式情報にもとづいて整理しています。",
     searchIntentNotes: [
       {
-        title: "名称・表示別の確認事項",
+        title: "YouTube Music PremiumとYouTube Premium",
         items: [
-          "公式ヘルプの対象は、YouTube PremiumとYouTube Music Premiumのメンバーシップ解約です。",
-          "Web請求の場合は、YouTubeの有料メンバーシップ画面が確認先として案内されています。",
-          "Apple請求またはGoogle Play請求の場合は、それぞれのストア側で手続きする扱いです。",
+          "YouTube Musicヘルプでは、YouTube PremiumとYouTube Music Premiumを同じ有料メンバーシップ解約記事で扱っています。",
+          "管理画面は youtube.com/paid_memberships です。",
+          "請求元によって、YouTube、Apple、Google Playのどこで管理するかが分かれます。",
         ],
       },
       {
-        title: "無料トライアルに関する記載",
+        title: "解約できない表示に関係する記載",
         items: [
-          "無料トライアル期間中に解約した場合、有料メンバーシップには移行しません。",
+          "請求元がAppleになっている場合、Appleアカウントで解約します。",
+          "Google Playの定期購入で利用している場合、Google Playのアカウント設定が確認先です。",
+          "すでに解約済みの場合は、有料メンバーシップ画面で状態を確認できます。",
         ],
       },
     ],
@@ -2120,17 +2178,22 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       {
         route: "Web請求",
         management: "YouTubeの有料メンバーシップ画面",
-        notes: ["youtube.com/paid_memberships が確認先として案内されています。"],
+        notes: [
+          "youtube.com/paid_memberships で [メンバーシップの管理] から進みます。",
+          "請求対象期間が終わるまでは特典を利用できます。",
+        ],
       },
       {
         route: "Apple請求",
         management: "App Store側のサブスクリプション管理",
-        notes: ["YouTube側ではなく、Apple請求向けの手続き先に分かれます。"],
+        notes: ["iOS向けYouTubeアプリから登録した場合は、Appleアカウントで解約します。"],
       },
       {
         route: "Google Play請求",
         management: "Google Play側の定期購入管理",
-        notes: ["YouTube側ではなく、Google Play請求向けの手続き先に分かれます。"],
+        notes: [
+          "Google Playの定期購入で利用している場合は、Google Playのアカウント設定で解約できます。",
+        ],
       },
     ],
     notes: [
@@ -2318,15 +2381,23 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     primaryMethods: "Web / アプリ（購入経路により異なる場合あり）",
     loginRequired: "\u5fc5\u8981",
     timeEstimate: "記載なし",
-    asOf: "2026年05月",
+    asOf: "2026年08月",
     officialLinks: [
       {
         label: "Spotify サポート / Premium プランを解約する方法",
         url: "https://support.spotify.com/jp/article/cancel-premium/",
       },
       {
-        label: "Spotify サポート / プランを変更する",
-        url: "https://support.spotify.com/jp/article/change-plan/",
+        label: "Spotify サポート / Premium プランを変更する方法",
+        url: "https://support.spotify.com/jp/article/switch-premium-plans/",
+      },
+      {
+        label: "Spotify サポート / Spotifyプランの詳細",
+        url: "https://support.spotify.com/jp/article/your-plan-details/",
+      },
+      {
+        label: "Spotify サポート / アカウントの閉鎖とデータの削除",
+        url: "https://support.spotify.com/jp/article/how-can-i-close-my-spotify-account/",
       },
     ],
     officialProcedureSections: [
@@ -2359,7 +2430,8 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     ],
     billingRouteNotes: [
       "パートナー企業経由のプランでは、アカウントページに表示されるパートナー企業のお問い合わせ用リンクから解約を進める案内があります。",
-      "Google Playや提携事業者経由の契約は、手続き先がSpotify以外に分かれます。",
+      "Google Play請求サービスを利用している場合、Premiumプランの変更はSpotifyアプリからのみ行う記載です。",
+      "FamilyまたはDuoプランのメンバーは、自分のアカウントをプランから削除できますが、プラン自体はキャンセルできません。",
     ],
     cancellationTimingNotes: [
       "Premiumは次の請求日まで利用でき、その後にFreeプランへ切り替わります。",
@@ -2373,13 +2445,22 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
     confirmationNotes: [
       "アカウントページのプラン表示から、現在の契約状況を確認できます。",
       "Spotify Freeと表示されている場合は、解約が必要なPremiumプランがない状態です。",
+      "Spotifyアプリでは、プロフィール画像、[設定とプライバシー]、[アカウント]、[請求] からプラン詳細を確認できると記載されています。",
+    ],
+    cancellationVsAccountDeletion: [
+      "Premiumの定期購入を解約する場合は、Spotify Freeプランに切り替えて支払いを停止する扱いです。",
+      "アカウント閉鎖は、すべてのSpotifyアプリおよびSpotifyサービスのアカウントを閉鎖し、データを永久に削除する手続きとして別記事で扱われています。",
+      "アカウントを閉鎖するとSpotifyからメールでリンクが送信され、7日以内であればそのリンクから再開できます。",
+      "7日を過ぎるとアカウントは完全に閉鎖され、データ削除処理が始まると記載されています。",
     ],
     unavailableOrExceptionNotes: [
       "パートナー企業経由のプランでは、Spotifyの通常のアカウントページだけで完結せず、表示されるパートナー企業のお問い合わせ用リンクから進める案内です。",
       "Spotify Freeと表示されている場合は、Premiumの解約手続き対象ではありません。",
+      "Spotifyから料金の請求があるのにSpotify Freeと表示される場合、別のSpotifyアカウントでPremiumを利用している可能性があると説明されています。",
+      "FamilyまたはDuoプランのメンバーは、プランの支払い方法のキャンセルや更新を主契約者に確認する扱いです。",
     ],
     officialSourceSummary:
-      "Spotifyのサポートでは、Premiumプランをアカウント情報ページから解約し、最終確認画面まで進める流れが説明されています。Premiumは次の請求日まで利用でき、その後Freeプランへ切り替わると記載されています。パートナー企業経由のプランやSpotify Free表示時の扱いも同じ解約記事内で確認できます。",
+      "Spotifyサポートでは、Premiumプランをアカウント情報ページで解約し、次の請求日までPremiumを利用した後にFreeへ切り替わる流れが説明されています。Spotify Free表示、パートナー企業経由、Family/Duoの主契約者とメンバーの違いも同じ解約記事内で整理されています。アカウント閉鎖とデータ削除は別記事で扱われ、Premium解約とは別の手続きです。",
     seoTitle:
       "Spotify Premiumの解約方法・Free表示とプラン変更の確認先",
     seoDescription:
@@ -2388,17 +2469,25 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       {
         title: "Premium解約とFree表示",
         items: [
-          "Spotify Freeと表示されている場合は、解約が必要なPremiumプランがない状態です。",
-          "Premium解約後は、次の請求日までPremiumを利用でき、その後Freeプランへ切り替わります。",
-          "Freeに切り替わった後も、プレイリストや保存済みの音楽は引き続き利用できます。",
+          "Premiumは次の請求日まで続き、その後Spotify Freeに切り替わります。",
+          "Spotify Freeと表示されているアカウントには、解約対象のPremiumプランと支払い情報がありません。",
+          "Freeに切り替わっても、プレイリスト、保存済みの音楽、ログインは残ります。",
         ],
       },
       {
-        title: "プラン変更・別経路の確認先",
+        title: "退会・アカウント閉鎖との違い",
         items: [
-          "Premiumプランは、Spotifyのアカウント情報ページから解約できます。",
-          "パートナー企業経由のプランでは、アカウントページに表示されるパートナー企業のお問い合わせ用リンクから解約を進める案内があります。",
-          "Spotifyサポートには、解約方法とは別にプラン変更の案内ページも掲載されています。",
+          "Premium解約は、支払いを停止してFreeプランへ切り替える手続きです。",
+          "アカウント閉鎖は、Spotifyアカウントとデータを永久に削除する手続きとして別に説明されています。",
+          "閉鎖後7日以内は、Spotifyから届くメール内のリンクでアカウントを再開できます。",
+        ],
+      },
+      {
+        title: "Family・Duo・パートナー経由",
+        items: [
+          "FamilyまたはDuoの主契約者は、通常のPremium解約手順でプランをキャンセルできます。",
+          "プランメンバーは自分のアカウントをプランから削除できますが、プラン自体のキャンセルはできません。",
+          "パートナー企業経由のプランは、アカウントページに表示されるパートナー企業のお問い合わせ用リンクが確認先です。",
         ],
       },
     ],
@@ -2407,7 +2496,8 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
         route: "Spotify直接管理のPremium",
         management: "Spotifyのアカウント情報ページ",
         notes: [
-          "「現在のプラン」または「プランを管理」から「プランをキャンセル」を選択し、最終確認画面まで進める流れです。",
+          "[プランを管理] から [定期購入を解約する] を選択します。",
+          "Premiumは次の請求日まで利用でき、その後Freeプランに切り替わります。",
         ],
       },
       {
@@ -2420,7 +2510,14 @@ export const PHASE1_SERVICES: ServiceRecord[] = [
       {
         route: "Spotify Free表示",
         management: "アカウントページのプラン表示",
-        notes: ["解約が必要なPremiumプランがない状態として案内されています。"],
+        notes: ["解約対象のPremiumプランと支払い情報がない状態です。"],
+      },
+      {
+        route: "Family / Duoのプランメンバー",
+        management: "プランからの削除 / 主契約者への確認",
+        notes: [
+          "メンバー自身はプランから削除できますが、プラン自体のキャンセルはできません。",
+        ],
       },
     ],
     notes: [

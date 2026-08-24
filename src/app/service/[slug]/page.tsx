@@ -66,8 +66,8 @@ function buildRouteItems(
   const items = [
     getWhereText(primaryMethods),
     loginRequired === "必要"
-      ? "公式案内では、手続きにログインが必要です。"
-      : "公式案内では、ログインせず確認できる手順が案内されています。",
+      ? "手続きにはログインが必要です。"
+      : "ログインせず確認できる手順が掲載されています。",
   ];
 
   if (notes?.length) {
@@ -116,7 +116,7 @@ function buildStructuredSections(service: ServiceRecord): DetailSection[] {
     ...(service.cancellationTimingNotes?.length || service.postCancellationAccess?.length
       ? [
           {
-            title: "更新日・利用期間に関する記載",
+            title: "解約後の利用・更新日の扱い",
             items: [
               ...(service.cancellationTimingNotes ?? []),
               ...(service.postCancellationAccess ?? []),
@@ -135,7 +135,7 @@ function buildStructuredSections(service: ServiceRecord): DetailSection[] {
     ...(service.confirmationNotes?.length
       ? [
           {
-            title: "完了確認・表示に関する記載",
+            title: "完了確認・契約状態の確認",
             items: service.confirmationNotes,
           },
         ]
@@ -143,7 +143,7 @@ function buildStructuredSections(service: ServiceRecord): DetailSection[] {
     ...(service.unavailableOrExceptionNotes?.length
       ? [
           {
-            title: "契約経路が分かれるケース",
+            title: "手続き先が見つからない場合に関係する公式記載",
             items: service.unavailableOrExceptionNotes,
           },
         ]
@@ -222,7 +222,7 @@ export default async function ServicePage({ params }: PageProps) {
           <h2 className="section-heading">このページで確認できること</h2>
           <p className="section-intro">
             {service.serviceName}
-            の公式案内をもとに、手続き場所、基本情報、タイミングや取り扱いに関する注記、公式リンクをまとめています。
+            の公開情報をもとに、手続き場所、基本情報、タイミングや取り扱いに関する注記、公式リンクをまとめています。
           </p>
         </section>
 
@@ -248,7 +248,7 @@ export default async function ServicePage({ params }: PageProps) {
         {service.contractRouteNotes?.length ? (
           <section className="section-panel stack-lg">
             <div className="stack">
-              <h2 className="section-heading">契約経路別の確認先</h2>
+              <h2 className="section-heading">契約経路による違い</h2>
               <p className="section-intro">
                 公式ページ内で契約経路ごとに分かれている手続き先を整理しています。
               </p>
@@ -351,9 +351,9 @@ export default async function ServicePage({ params }: PageProps) {
         ) : service.officialProcedureSections?.length ? (
           <section className="section-panel stack-lg">
             <div className="stack">
-              <h2 className="section-heading">公式案内で確認できる手続き項目</h2>
+              <h2 className="section-heading">公開情報で確認できる手続き項目</h2>
               <p className="section-intro">
-                公式ページで実際に案内されている確認事項だけを、項目ごとに整理しています。
+                公開ページで確認できる事項だけを、項目ごとに整理しています。
               </p>
             </div>
 
@@ -415,7 +415,9 @@ export default async function ServicePage({ params }: PageProps) {
           </section>
         ) : null}
 
-        {primaryNotes.length === 0 ? (
+        {!hasStructuredSections &&
+        !service.officialProcedureSections?.length &&
+        primaryNotes.length === 0 ? (
           <section className="compact-panel compact-panel-secondary stack">
             <h2 className="panel-title">掲載範囲</h2>
             <p>
